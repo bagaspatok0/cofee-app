@@ -1,0 +1,85 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+
+<LoginAuthPatokCoffee>:
+    name: 'login'
+
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+        Image:
+            source: "image/login.jpeg"
+            pos_hint: {'center_y': 0.7}
+        AnchorLayout:
+            padding: dp(10)
+            anchor_x: 'left'
+            anchor_y: 'top'
+            MDIconButton:
+                icon: 'icons/left.png'
+                on_press: root.manager.current = 'homescreen'
+
+        MDLabel:
+            text: "Log In"
+            font_name: 'font/text/Poppins-Bold.ttf'
+            font_size: '23sp'
+            halign: 'center'
+            pos_hint: {'center_x': 0.5,'center_y': 0.35}
+
+        MDBoxLayout:
+            padding: dp(20)
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: dp(70)
+            pos_hint: {'center_y': 0.23}
+            MDCard:
+                size_hint: 1, None
+                height: dp(50)
+                md_bg_color: get_color_from_hex('#948b8b')
+                TextInput:
+                    id: email_input
+                    padding: dp(10)
+                    hint_text: 'Email@example.com'
+                    hint_text_color: 'black'
+                    pos_hint: {'center_y': 0.5}
+                    height: self.minimum_height
+                    cursor_color: 'black'
+                    multiline: False
+                    background_color: 0, 0, 0, 0
+                    foreground_color: 'black'
+                    size_hint: 1, None
+                    font_size: '16sp'
+                    font_name: 'font/text/Poppins-Regular.ttf'
+
+        MDBoxLayout:
+            padding: dp(20)
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: dp(70)
+            pos_hint: {'center_y': 0.13}
+            MDCard:
+                size_hint: 1, None
+                height: dp(50)
+                md_bg_color: get_color_from_hex('#948b8b')
+                TextInput:
+                    id: password_input
+                    padding: dp(10)
+                    hint_text: 'Password'
+                    password: True
+                    hint_text_color: 'black'
+                    pos_hint: {'center_y': 0.5}
+                    height: self.minimum_height
+                    cursor_color: 'black'
+                    multiline: False
+                    background_color: 0, 0, 0, 0
+                    foreground_color: 'black'
+                    size_hint: 1, None
+                    font_size: '16sp'
+                    font_name: 'font/text/Poppins-Regular.ttf'
+        
+        MDRaisedButton:
+            text: 'Submit'
+            pos_hint: {'center_x': 0.5,'center_y': 0.05}
+            size_hint_x: 0.5
+            font_name: 'font/text/Poppins-Medium.ttf'
+            font_size: '15sp'
+            elevation: 3.5
+            md_bg_color: get_color_from_hex('#4a2e2b')
+            on_press: app.login_to_pyrebase(email_input, password_input)

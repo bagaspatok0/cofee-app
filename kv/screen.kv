@@ -1,0 +1,48 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+<HomeScreenPatokCoffee>:
+    name: 'homescreen'
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex('#b2935b')
+        Image:
+            source: 'image/screen-coffe.png'
+            pos_hint: {'center_y': .73}
+        
+        MDLabel:
+            text: "PATOK COFFEE"
+            font_name: 'font/text/Poppins-Bold.ttf'
+            halign: 'center'
+            font_size: '28sp'
+            pos_hint: {'center_y': 0.9}
+            markup: True
+
+        MDLabel:
+            padding: dp(13)
+            text: "'Nikmati secangkir kopimu dan lakukan apa yang ingin kamu impikan'"
+            font_name: 'font/text/Poppins-Regular.ttf'
+            font_size: '16sp'
+            halign: 'center'
+            pos_hint: {'center_y': 0.43}
+        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (1,1)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.67}
+            spacing: dp(20)
+
+            MDRaisedButton:
+                text: 'Login'
+                size_hint: (0.6, None)
+                pos_hint: {'center_x': 0.5}
+                height: dp(48)
+                font_name: 'font/text/Poppins-SemiBold.ttf'
+                md_bg_color: get_color_from_hex('#5e5e5e')
+                on_release: root.manager.current = 'login'
+
+            MDRaisedButton:
+                text: 'Signup'
+                size_hint: (0.6, None)
+                pos_hint: {'center_x': 0.5}
+                height: dp(48)
+                font_name: 'font/text/Poppins-SemiBold.ttf'
+                md_bg_color: get_color_from_hex('#a6a6a6')
+                on_release: root.manager.current = 'signup'

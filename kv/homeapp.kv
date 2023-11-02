@@ -1,0 +1,271 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<HomeApplicationCoffee>:
+    name: 'homeapp'
+    time_and_user: time_and_user
+
+    MDBoxLayout:
+        padding: dp(20)
+
+        MDBoxLayout:
+            orientation: 'vertical'
+
+            MDScrollView:
+                
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    adaptive_height: True
+                
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(50)
+                        AnchorLayout:
+                            anchor_x: 'left'
+                            anchor_y: 'top'
+                            MDIconButton:
+                                icon: 'icons/dashboard.png'
+
+                            MDLabel:
+                                text: ''
+                                halign: 'center'
+                                font_name: 'font/text/Poppins-Bold.ttf'
+                                font_size: '20sp'
+
+                    # Username dari user mengambil dari pyrebase
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(45)
+                        MDLabel:
+                            id: time_and_user
+                            text: 'Hello, PATOK' # module datetime {datetime}, {username}
+                            font_name: 'font/text/Poppins-Regular.ttf'
+                            font_size: '18sp'
+                            pos_hint: {'center_y': 0.35}
+                    
+                    # Search Bar dan Filter Coffee
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(100)
+                        spacing: dp(5)
+                        MDCard:
+                            size_hint: None, None
+                            height: dp(50)
+                            width: dp(50)
+                            radius: [15]
+                            pos_hint: {'center_y': 0.5}
+                            md_bg_color: get_color_from_hex('#bfb8b8')
+                            MDIconButton:
+                                icon: 'icons/search.png'
+                                pos_hint: {'center_y': 0.5}
+
+                        MDCard:
+                            size_hint: 1, None
+                            height: dp(50)
+                            radius: [15]
+                            pos_hint: {'center_y': 0.5}
+                            padding: dp(15)
+                            md_bg_color: get_color_from_hex('#bfb8b8')
+                            TextInput:
+                                hint_text: 'Search Coffee'
+                                pos_hint: {'center_y': 0.5}
+                                height: self.minimum_height
+                                cursor_color: 'black'
+                                multiline: False
+                                background_color: 0, 0, 0, 0
+                                foreground_color: 'black'
+                                size_hint: 1, None
+                                font_size: '16sp'
+                                font_name: 'font/text/Poppins-Regular.ttf'
+
+                        MDCard:
+                            size_hint: None, None
+                            width: dp(50)
+                            height: dp(50)
+                            md_bg_color: get_color_from_hex('#eb600c')
+                            pos_hint: {'center_y': 0.5}
+                            radius: [10]
+                            MDIconButton:
+                                icon: 'icons/filter.png'
+                                pos_hint: {'center_y': 0.5}
+                    
+                    # Promo coffee
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(100)
+
+                        MDCard:
+                            size_hint: 1, 1
+                            radius: [20]
+                            md_bg_color: get_color_from_hex('#4d3636')
+                            padding: dp(20)
+
+                            MDLabel:
+                                text: 'Get 20% of your \nnext purchase!'
+                                color: 'white'
+                                font_name: 'font/text/Poppins-Regular.ttf'
+                                font_size: '18sp'
+                            MDRaisedButton:
+                                text: 'Promo'
+                                pos_hint: {'center_x': 0.5 ,'center_y': 0.5}
+                                md_bg_color: get_color_from_hex('#eb600c')
+                                font_name: 'font/text/Poppins-Regular.ttf'
+                                elevation: 4.3
+
+                    # Categories
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(70)
+
+                        MDLabel:
+                            text: 'Categories'
+                            font_name: 'font/text/Poppins-Medium.ttf'
+                            font_size: '17sp'
+                            pos_hint: {'center_y': 0.5}
+                    # Choose Categories
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(50)
+                        MDScrollView:
+                            do_scroll_x: True
+                            do_scroll_y: False
+                            MDGridLayout:
+                                spacing: dp(10)
+                                height: self.minimum_height
+                                width: self.minimum_width
+                                size_hint_x: None
+                                cols: 5
+
+                                CategoriesMenu:
+                                    list: 'Popular'
+                                    md_bg_color: get_color_from_hex('#3b2a2a')
+                                CategoriesMenu:
+                                    list: 'Natural'
+                                    md_bg_color: get_color_from_hex('#BCA37F')
+                                CategoriesMenu:
+                                    list: 'Washed'
+                                    md_bg_color: get_color_from_hex('#BCA37F')
+                                CategoriesMenu:
+                                    list: 'Honey'
+                                    md_bg_color: get_color_from_hex('#BCA37F')
+                                CategoriesMenu:
+                                    list: 'Single Or'
+                                    md_bg_color: get_color_from_hex('#BCA37F')
+                    
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(70)
+
+                        MDLabel:
+                            text: 'Popular'
+                            pos_hint: {'center_y': 0.5}
+                            font_name: 'font/text/Poppins-Medium.ttf'
+                            font_size: '17sp'
+                        MDTextButton:
+                            text: 'See All'
+                            font_name: 'font/text/Poppins-Light.ttf'
+                            pos_hint: {'center_y': 0.5}
+                            font_size: '15sp'
+                    
+                    # Coffee Popular Bag
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(430)
+                        MDGridLayout:
+                            cols: 2
+                            spacing: dp(10)
+                            PopularCoffee:
+                                image: 'bag_coffee_image/1.jpg'
+                                name_coffee_bag: 'Arabika Malabar'
+                            PopularCoffee:
+                                image: 'bag_coffee_image/2.jpg'
+                                name_coffee_bag: 'Arabika Gayo'
+                            PopularCoffee:
+                                image: 'bag_coffee_image/3.jpg'
+                                name_coffee_bag: 'Arabika Toraja'
+                            PopularCoffee:
+                                image: 'bag_coffee_image/1.jpg'
+                                name_coffee_bag: 'Arabika Flores'
+                    
+                    # Coffee Menu
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(100)
+                        MDLabel:
+                            text: 'Manual Brew'
+                            font_name: 'font/text/Poppins-Medium.ttf'
+                            font_size: '17sp'
+                        MDTextButton:
+                            text: 'See All'
+                            font_name: 'font/text/Poppins-Light.ttf'
+                            pos_hint: {'center_y': 0.5}
+                            font_size: '15sp'
+
+            MDBoxLayout:
+                size_hint_y: None
+                height: dp(50)
+                md_bg_color: get_color_from_hex('#b1a8bf')
+                pos_hint: {'center_x': 0.5}
+                size_hint: None, None
+                radius: [10]
+                adaptive_width: True
+
+                MDIconButton:
+                    icon: 'icons/home.png'
+                    width: root.width*.2
+                    pos_hint: {'center_y': 0.5}
+                MDIconButton:
+                    width: root.width*.2
+                    pos_hint: {'center_y': 0.5}
+                    icon: 'icons/notification.png'
+                MDIconButton:
+                    icon: 'icons/cart.png'
+                    width: root.width*.2
+                    pos_hint: {'center_y': 0.5}
+                MDIconButton:
+                    icon: 'icons/user.png'
+                    width: root.width*.2
+                    pos_hint: {'center_y': 0.5}
+                    on_release: root.manager.current = 'account'
+    
+<PopularCoffee@MDCard>:
+    image: ''
+    name_coffee_bag: ''
+    size_hint: 1, None
+    height: dp(200)
+    md_bg_color: 'white'
+    elevation: 3
+    padding: dp(5)
+    orientation: 'vertical'
+
+    MDBoxLayout:
+        size_hint_y: None
+        height: dp(140)
+        FitImage:
+            source: root.image
+    MDBoxLayout:
+        padding: dp(10)
+        size_hint_y: None
+        height: dp(50)
+        MDLabel:
+            text: root.name_coffee_bag
+            font_name: 'font/text/Poppins-Regular.ttf'
+            font_size: '15sp'
+
+<ManulBrewMenu@MDCard>:
+    image: ''
+    name_manual_brew: ''
+    size_hint: 1, None
+    
+<CategoriesMenu@MDCard>:
+    list: ''
+    size_hint: None, None
+    height: dp(35)
+    width: dp(80)
+    MDBoxLayout:
+        size_hint_y: 1
+        MDLabel:
+            text: root.list
+            halign: 'center'
+            color: 'white'
+            font_name: 'font/text/Poppins-Regular.ttf'
+            font_size: '14sp'

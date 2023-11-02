@@ -1,0 +1,68 @@
+<Account>:
+    name: 'account'
+    user_account: user_account
+    patokpay: patokpay
+    MDBoxLayout:
+        padding: dp(20)
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDScrollView:
+                MDBoxLayout:
+                    adaptive_height: True
+                    orientation: 'vertical'
+
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(60)
+                        MDLabel:
+                            id: user_account
+                            text: '' # (Heloo, {User})
+                            pos_hint: {'center_y': 0.6}
+                            font_name: 'font/text/Poppins-Regular.ttf'
+                            font_size: '20sp'
+                        MDIconButton:
+                            icon: 'icons/user.png'
+                            pos_hint: {'center_y': 0.6}
+                    
+                    MDFloatLayout:
+                        size_hint_y: None
+                        height: dp(200)
+                        md_bg_color: get_color_from_hex('#DFCCFB')
+                        radius: [20]
+                        orientation: 'horizontal'
+                        MDLabel:
+                            id: patokpay
+                            text: ''
+                            pos_hint: {'center_y': 0.8}
+                            halign: 'left'
+                            padding: dp(15)
+                            font_name: 'font/text/Poppins-Regular.ttf'
+                            font_size: '16sp'
+
+            MDBoxLayout:
+                size_hint_y: None
+                height: dp(50)
+                md_bg_color: get_color_from_hex('#b1a8bf')
+                pos_hint: {'center_x': 0.5}
+                size_hint: None, None
+                radius: [10]
+                adaptive_width: True
+
+                MDIconButton:
+                    icon: 'icons/home.png'
+                    width: root.width*.2
+                    pos_hint: {'center_y': 0.5}
+                    on_release: root.manager.current = 'homeapp'
+                MDIconButton:
+                    width: root.width*.2
+                    pos_hint: {'center_y': 0.5}
+                    icon: 'icons/notification.png'
+                MDIconButton:
+                    icon: 'icons/cart.png'
+                    width: root.width*.2
+                    pos_hint: {'center_y': 0.5}
+                MDIconButton:
+                    icon: 'icons/user.png'
+                    width: root.width*.2
+                    pos_hint: {'center_y': 0.5}
+                    on_release: root.manager.current = 'account'

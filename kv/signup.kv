@@ -1,0 +1,124 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+
+<SiginupPatokCoffee>:
+    name: 'signup'
+
+    MDFloatLayout:
+        orientation: 'vertical'
+
+        AnchorLayout:
+            padding: dp(20)
+            anchor_y: 'top'
+            anchor_x: 'left'
+            MDIconButton:
+                icon: 'icons/left.png'
+                on_release: root.manager.current = 'homescreen'
+
+        # USERNAME
+
+        MDLabel:
+            text: 'Username'
+            font_name: 'font/text/Poppins-Regular.ttf'
+            font_size: '18sp'
+            pos_hint: {'center_y': 0.8}
+            padding: dp(20)
+        MDBoxLayout:
+            size_hint: 1, None
+            padding: dp(20) 
+            height: dp(50)
+            pos_hint: {'center_y': 0.71}
+            MDCard:
+                radius: [13]
+                size_hint: 1, None
+                height: dp(50)
+                pos_hint: {'center_y': 0.5}
+                md_bg_color: get_color_from_hex('#B5B5A9')
+                TextInput:
+                    id: username_to_user
+                    padding: dp(15)
+                    hint_text: 'Enter Username'
+                    background_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    height: self.minimum_height
+                    pos_hint: {'center_y': 0.5}
+                    font_name: 'font/text/Poppins-Regular.ttf'
+                    multiline: False
+        
+        # EMAIL
+
+        MDLabel:
+            text: 'Email'
+            font_name: 'font/text/Poppins-Regular.ttf'
+            font_size: '18sp'
+            pos_hint: {'center_y': 0.6}
+            padding: dp(20)
+        MDBoxLayout:
+            size_hint: 1, None
+            padding: dp(20) 
+            height: dp(50)
+            pos_hint: {'center_y': 0.51}
+            MDCard:
+                radius: [13]
+                size_hint: 1, None
+                height: dp(50)
+                pos_hint: {'center_y': 0.5}
+                md_bg_color: get_color_from_hex('#B5B5A9')
+                TextInput:
+                    id: email_to_user
+                    padding: dp(15)
+                    hint_text: 'Enter Email'
+                    background_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    height: self.minimum_height
+                    pos_hint: {'center_y': 0.5}
+                    font_name: 'font/text/Poppins-Regular.ttf'
+                    multiline: False
+            
+        # PASSWORD
+        
+        MDLabel:
+            text: 'Password'
+            font_name: 'font/text/Poppins-Regular.ttf'
+            font_size: '18sp'
+            pos_hint: {'center_y': 0.4}
+            padding: dp(20)
+        MDBoxLayout:
+            size_hint: 1, None
+            padding: dp(20) 
+            height: dp(50)
+            pos_hint: {'center_y': 0.31}
+            MDCard:
+                radius: [13]
+                size_hint: 1, None
+                height: dp(50)
+                pos_hint: {'center_y': 0.5}
+                md_bg_color: get_color_from_hex('#B5B5A9')
+                TextInput:
+                    id: password_to_user
+                    padding: dp(15)
+                    hint_text: 'Enter Password'
+                    password: True
+                    background_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    height: self.minimum_height
+                    pos_hint: {'center_y': 0.5}
+                    font_name: 'font/text/Poppins-Regular.ttf'
+                    multiline: False
+        
+        MDRaisedButton:
+            text: 'Sign Up'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.18}
+            size_hint_x: 0.5
+            font_name: 'font/text/Poppins-Medium.ttf'
+            font_size: '15sp'
+            elevation: 3.5
+            md_bg_color: get_color_from_hex('#6b4747')
+            on_press: app.signup_to_pyrebase(username_to_user, email_to_user, password_to_user, status_signup)
+        
+        MDLabel:
+            id: status_signup
+            text: ''
+            pos_hint: {'center_y': 0.09}
+            halign: 'center'
+            font_name: 'font/text/Poppins-Medium.ttf'
+            font_size: '15sp'
